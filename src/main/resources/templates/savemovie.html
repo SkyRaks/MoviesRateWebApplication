@@ -9,10 +9,10 @@
 <body>
 <div class="col-6 mx-auto my-5">
     <h2>Save new movie</h2>
-    <form th:object="${movie}" method="post" enctype="multipart/form-data">
+    <form th:object="${movie}" method="post">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" th:field="*{title}" aria-describedby="titleHelp">
+            <input type="text" class="form-control" th:field="*{title}" id="title" aria-describedby="titleHelp">
         </div>
         <div class="mb-3">
             <label for="director" class="form-label">Director</label>
