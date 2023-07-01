@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-@Component
+//@Component
 public class MovieDataLoader implements ApplicationRunner {
     private MovieRepository movieRepository;
 

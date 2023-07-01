@@ -8,32 +8,62 @@
 </head>
 <body>
 <div class="col-6 mx-auto my-5">
-    <table class="table">
-        Here are some movies:
-        <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">Title</th>
-            <th scope="col">Director</th>
-            <th scope="col">Release date</th>
-            <th scope="col">Budget</th>
-            <th scope="col">Score</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="movie : ${movies}">
-            <th scope="row" th:text="${movie.id}">1</th>
-            <td th:text="${movie.title}">Mark</td>
-            <td th:text="${movie.director}">Otto</td>
-            <td th:text="${{movie.releaseDate}}">@mdo</td>
-            <td th:text="${{movie.budget}}">@mdo</td>
-            <td th:text="${{movie.score}}">@mdo</td>
-        </tr>
-        </tbody>
-    </table>
-    <a method="get" href="/savemovie">
-        <button type="submit" class="btn btn-outline-primary">Save movie</button>
-    </a>
+<!--    <form method="post">-->
+        <table class="table table-bordered table-hover">
+            <div style="text-align: center;">
+                <h2>
+                    Here are some movies:
+                </h2>
+            </div>
+            <thead>
+            <tr>
+                <th scope="col">Edit</th>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Director</th>
+                <th scope="col">Release date</th>
+                <th scope="col">Budget</th>
+                <th scope="col">Score</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${#lists.isEmpty(movies)}">
+                <td colspan="6" class="text-center">No data</td>
+            </tr>
+            <tr class="table-light" th:each="movie : ${movies}">
+                <td>
+                    <div class="btn-group dropstart">
+                        <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" th:href="@{user-update/{id}(id=${movie.id})}">
+                                    Edit
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" th:href="@{user-delete/{id}(id=${movie.id})}">
+                                    Delete
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+                <th scope="row" th:text="${movie.id}">1</th>
+                <td th:text="${movie.title}">Mark</td>
+                <td th:text="${movie.director}">Otto</td>
+                <td th:text="${{movie.releaseDate}}">@mdo</td>
+                <td th:text="${{movie.budget}}">@mdo</td>
+                <td th:text="${{movie.score}}">@mdo</td>
+            </tr>
+            </tbody>
+        </table>
+<!--    </form>-->
+    <div style="text-align: center;">
+        <a method="get" href="/newmovie">
+            <button type="submit" class="btn btn-dark">Save movie</button>
+        </a>
+    </div>
 </div>
 </body>
 </html>
