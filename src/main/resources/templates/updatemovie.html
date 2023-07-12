@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit movie</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="col-6 mx-auto my-5">
+  <div style="text-align: center;">
+    <h2>
+      Edit movie
+    </h2>
+  </div>
+  <form th:object="${movie}" th:action="@{/user-update}" method="post" novalidate enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" th:field="*{title}" th:errorclass="is-invalid" id="title" aria-describedby="titleHelp">
+      <div id="validationTitle" class="invalid-feedback" th:errors="*{title}">
+        Please choose a username.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="posterFile" class="form-label">Movie poster</label>
+      <input class="form-control" type="file" id="posterFile" th:field="*{posterFile}">
+    </div>
+    <div class="mb-3">
+      <label for="director" class="form-label">Director</label>
+      <input type="text" class="form-control" th:field="*{director}" th:errorclass="is-invalid" id="director" aria-describedby="directorHelp">
+      <div id="validationDirector" class="invalid-feedback" th:errors="*{director}">
+        Please choose a username.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="releaseDate" class="form-label">Release date</label>
+      <input type="date" class="form-control" id="releaseDate" th:field="*{releaseDate}" th:errorclass="is-invalid" aria-describedby="releaseDateHelp">
+      <div id="validationReleaseDate" class="invalid-feedback" th:errors="*{releaseDate}">
+        Please choose a username.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="budget" class="form-label">Budget</label>
+      <input type="number" class="form-control" id="budget" th:field="*{budget}" th:errorclass="is-invalid" aria-describedby="budgetHelp">
+      <div id="validationBudget" class="invalid-feedback" th:errors="*{budget}">
+        Please choose a username.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="score" class="form-label">Example range</label>
+      <input type="range" class="form-range" min="1" max="10" id="score" th:field="*{score}" aria-describedby="budgetHelp">
+    </div>
+    <input type="hidden" th:field="*{id}"/>
+    <div style="text-align: center;">
+      <button type="submit" class="btn btn-warning">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+</body>
+</html>
