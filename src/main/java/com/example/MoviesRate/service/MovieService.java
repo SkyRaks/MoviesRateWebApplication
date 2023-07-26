@@ -34,9 +34,6 @@ public class MovieService {
 
     public void deleteById(Long id) throws IOException {
         Optional<Movie> movie = movieRepository.findById(id);
-//        Set<String> posterName = movie.stream()
-//                .map(Movie::getPosterFile)
-//                .collect(Collectors.toSet());
         Optional<String> posterName = movie.map(Movie::getPosterFile);
         fileStorageRepository.deleteByName(posterName);
         movieRepository.deleteById(id);
